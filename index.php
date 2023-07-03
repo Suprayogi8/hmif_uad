@@ -36,8 +36,8 @@ include "koneksi.php";
         </div>
     </nav>
 
-    <section class="w-full py-36">
-        <div class="w-[90%] h-20 border mx-auto">
+    <section class="w-full py-36 max-h-fit">
+        <div class="w-[90%] h-20 border mx-auto grid grid-cols-2 gap-5">
             <!--  PHP Untuk memanggil data news pada database  -->
             <?php
 
@@ -49,15 +49,15 @@ include "koneksi.php";
                     if ($index == 0) {
             ?>
 
-                        <form class="w-full bg-white relative h-[400px]">
+                        <form class="col-span-2 bg-white relative h-[400px]">
                             <input type="hidden" value="<?= $row['id_berita'] ?>" name="id">
                             <img src="<?= $row['gambar'] ?>" class="w-full h-full bg-cover" alt="News">
                             <div class="absolute top-0 left-0 text-white max-w-fit px-10 bg-gradient-to-br from-black to-transparent">
                                 <p class="text-2xl max-w-[90%] py-2"><?= $row['judul'] ?></p>
                             </div>
                             <div class="absolute max-w-fit left-10 bottom-7 flex space-x-5">
-                                <a href="" class="px-3 py-2 bg-gray-300">Komen</a>
-                                <a href="#" class="px-3 py-2 bg-gray-300">Selengkapnya</a>
+                                <button name="komen" class="px-3 py-2 bg-gray-300">Komen</button>
+                                <button name="detail" class="px-3 py-2 bg-gray-300">Selengkapnya</button>
                             </div>
 
                         </form>
@@ -66,9 +66,21 @@ include "koneksi.php";
                     } else {
                     ?>
 
-                        
 
-                    <?php
+                        <form class="bg-white relative h-[400px]">
+                            <input type="hidden" value="<?= $row['id_berita'] ?>" name="id">
+                            <img src="<?= $row['gambar'] ?>" class="w-full h-full bg-cover" alt="News">
+                            <div class="absolute top-0 left-0 text-white max-w-fit px-10 bg-gradient-to-br from-black to-transparent">
+                                <p class="text-2xl max-w-[90%] py-2"><?= $row['judul'] ?></p>
+                            </div>
+                            <div class="absolute max-w-fit left-10 bottom-7 flex space-x-5">
+                                <button name="komen" type="submit" class="px-3 py-2 bg-gray-300">Komen</button>
+                                <button name="detail" type="submit" class="px-3 py-2 bg-gray-300">Selengkapnya</button>
+                            </div>
+
+                        </form>
+
+            <?php
                     }
                     $index++;
                 }
@@ -79,6 +91,8 @@ include "koneksi.php";
 
         </div>
     </section>
+
+
 </body>
 
 </html>
